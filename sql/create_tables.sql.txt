@@ -1,0 +1,50 @@
+-- Fact table: one row per employee
+CREATE TABLE fact_employee (
+    EmployeeNumber INT PRIMARY KEY,
+    Age INT,
+    AgeGroup NVARCHAR(20),
+    Gender NVARCHAR(10),
+    MaritalStatus NVARCHAR(20),
+    Department NVARCHAR(50),
+    JobRole NVARCHAR(50),
+    JobLevel INT,
+    MonthlyIncome INT,
+    AnnualIncome INT,
+    IncomeBand NVARCHAR(20),
+    YearsAtCompany INT,
+    TenureBand NVARCHAR(20),
+    TotalWorkingYears INT,
+    Attrition NVARCHAR(5),
+    AttritionFlag INT,
+    OverTime NVARCHAR(5),
+    BusinessTravel NVARCHAR(30),
+    JobSatisfaction INT,
+    WorkLifeBalance INT,
+    EnvironmentSatisfaction INT,
+    RelationshipSatisfaction INT,
+    PerformanceRating INT
+);
+
+-- Dimension table: attrition by department
+CREATE TABLE dim_dept_attrition (
+    Department NVARCHAR(50) PRIMARY KEY,
+    TotalEmployees INT,
+    Attrited INT,
+    AttritionRate DECIMAL(5,2)
+);
+
+-- Dimension table: attrition by age group
+CREATE TABLE dim_age_attrition (
+    AgeGroup NVARCHAR(20) PRIMARY KEY,
+    TotalEmployees INT,
+    Attrited INT,
+    AttritionRate DECIMAL(5,2)
+);
+
+-- Dimension table: income by job role
+CREATE TABLE dim_jobrole_income (
+    JobRole NVARCHAR(50) PRIMARY KEY,
+    TotalEmployees INT,
+    AvgMonthlyIncome DECIMAL(10,2),
+    AvgAnnualIncome DECIMAL(10,2)
+);

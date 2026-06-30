@@ -14,7 +14,7 @@ def get_connection():
     username = "hradmin"
     password = st.secrets["sql_password"]
     
-    connection_string = f"mssql+pyodbc://{username}:{password}@{server}:1433/{database}?driver=ODBC+Driver+18+for+SQL+Server&Encrypt=yes&TrustServerCertificate=no"
+    connection_string = f"mssql+pymssql://{username}:{password}@{server}:1433/{database}"
     engine = create_engine(connection_string)
     return engine
 
